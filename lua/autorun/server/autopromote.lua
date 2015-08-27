@@ -23,6 +23,8 @@ timer.Create( "autopromotev2", 10, 0, function()
 		for t,r in pairs( autopromote ) do		
 			if uptime >= t and v:CheckGroup( startinggroup ) and !v:CheckGroup( endinggroup ) and !table.HasValue(extrablacklisted,v:GetUserGroup()) and !v:IsAdmin() and !v:CheckGroup( r ) then
 				RunConsoleCommand( "ulx","adduser", v:Nick(), r )
+			elseif uptime < t and v:CheckGroup(r) then
+				RunConsoleCommand("ulx","adduser",v:Nick(),startinggroup)
 			end
 		end
 	end
